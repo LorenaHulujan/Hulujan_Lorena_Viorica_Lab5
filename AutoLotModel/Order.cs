@@ -14,5 +14,9 @@ namespace AutoLotModel
         public int? CustId { get; set; }
 
         public int? CarId { get; set; }
+
+        public virtual Customer Customer { get; set; }
+
+        public virtual Inventory Inventory { get; set; }
     }
 }

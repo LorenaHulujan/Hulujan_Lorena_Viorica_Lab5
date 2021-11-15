@@ -18,6 +18,15 @@ namespace AutoLotModel
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Orders)
+                .WithOptional(e => e.Customer)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Inventory>()
+                .HasMany(e => e.Orders)
+                .WithOptional(e => e.Inventory)
+                .WillCascadeOnDelete();
         }
     }
 }

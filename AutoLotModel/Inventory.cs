@@ -9,6 +9,12 @@ namespace AutoLotModel
     [Table("Inventory")]
     public partial class Inventory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Inventory()
+        {
+            Orders = new HashSet<Order>();
+        }
+
         [Key]
         public int CarId { get; set; }
 
@@ -17,5 +23,8 @@ namespace AutoLotModel
 
         [StringLength(50)]
         public string Color { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
